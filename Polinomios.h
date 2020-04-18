@@ -8,8 +8,8 @@
 struct no
 {
     float coef;                              /*coeficiente*/
-    int exp;                                 /*expoente*/
-    struct no *proximo;                      /*sucessor do no*/
+    int exp;                                 /*exponente*/
+    struct no *proximo;                      /*sucesor de no*/
 };
 typedef struct no No;
 
@@ -51,11 +51,11 @@ float resultadoPolinomio(No *l,float v);
 float compostoPolinomio(No *l1,No *l2,float v);
 float n_compostoPolinomio(float v);
 
-/** Toda vez que fizer uma operacao nova, inserir o string do usuario ou resultado da operação
-(ex: Resultado=3x^2+2x) na lista LOG, no fim, quando usario requsitar o arquivo log, tudo da
-lista eh escrito e printado do arquivo. **/
+/** Cada vez que realice una nueva operación, inserte la cadena de usuario o el resultado de la operación
+(ej: Resultado = 3x ^ 2 + 2x) en la lista de REGISTRO, al final, cuando uso para solicitar el archivo de registro, todo desde
+La lista se escribe e imprime desde el archivo. **/
 char *transformaPolinomio(No* polinomio);
-NoLOG* criaListaLOG(); /**Inicializar no main **/
-NoLOG* InsereInicioLOG(NoLOG* l, char* info); /** Funcao nova **/
-void escreveLOG(FILE *log, NoLOG *lista); /** Funcao nova **/
-void imprimeLOG(FILE *log); /** Funcao nova **/
+NoLOG* criaListaLOG(); /**Arrancar a principal**/
+NoLOG* InsereInicioLOG(NoLOG* l, char* info); /** Nueva función **/
+void escreveLOG(FILE *log, NoLOG *lista); /** Nueva función **/
+void imprimeLOG(FILE *log); /** Nueva función **/

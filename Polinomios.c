@@ -1,6 +1,6 @@
 #include "Polinomios.h"
 
-/*A função pega os coeficientes e expoentes de uma string(na forma de polinomio) e coloca em uma lista*/
+/*La función toma los coeficientes y exponentes de una cadena (en forma de polinomio) y la coloca en una lista*/
 No* transformaString(char* str)
 {
     No* polinomio = criaLista();
@@ -12,43 +12,43 @@ No* transformaString(char* str)
     float coef = 0;
     int expo = 0;
 
-    while(strlen(str))                                      /*roda enquanto a string str não é vazia*/
+    while(strlen(str))                                      /*se ejecuta mientras la cadena str no está vacía*/
     {
-        if (str[0] == '+' || str[0] == '-')                 /*quarda o sinal e o apaga da string str*/
+        if (str[0] == '+' || str[0] == '-')                 /*guarda la señal y elimina la cadena str*/
         {
             sinal = str[0];
             apagarParteString(str, 1);
         }
 
-        copiaParteNumerica(str, strCoef);                   /*copia o coeficiente para a string strNumero*/
+        copiaParteNumerica(str, strCoef);                   /*copia el coeficiente a la cadena strNumero*/
 
-        if(strlen(strCoef) == 0) coef = 1;                  /*verifica se possui coeficiente*/
-        else apagarParteString(str, strlen(strCoef));       /*apaga a string strNumero do começo de str*/
+        if(strlen(strCoef) == 0) coef = 1;                  /*comprueba si tiene un coeficiente*/
+        else apagarParteString(str, strlen(strCoef));       /*eliminar la cadena strNumero desde el principio de str*/
 
-        if(str[0] == 'x')                                   /*verifica se o primeiro caractere de str é 'x'*/
+        if(str[0] == 'x')                                   /*comprueba si el primer carácter de str es 'x'*/
         {
-            apagarParteString(str,1);                       /*se for, apaga o caractere 'x' do começo da string str*/
+            apagarParteString(str,1);                       /*Si es así, elimine el carácter 'x' del principio de la cadena str*/
 
-            if(str[0] == '^')                               /*verifica se x possui expoente*/
+            if(str[0] == '^')                               /*comprueba si x tiene un exponente*/
             {
-                apagarParteString(str, 1);                  /*se possuir apaga caractere '^' do começo da string str*/
+                apagarParteString(str, 1);                  /*si lo tiene, elimine el carácter '^' al comienzo de la cadena str*/
 
-                copiaParteNumerica(str, strExp);           /*copia o expoente para a string strExp*/
+                copiaParteNumerica(str, strExp);           /*copie el exponente a la cadena strExp*/
 
-                apagarParteString(str, strlen(strExp));     /*apaga a string strExp do começo da string str*/
+                apagarParteString(str, strlen(strExp));     /*eliminar la cadena strExp desde el principio de la cadena str*/
             }
-            else expo = 1;                                  /*se não possuir expoente determina que o expoente é igual a 1*/
+            else expo = 1;                                  /*si no tiene un exponente, determina que el exponente es igual a 1*/
         }
-        else expo = 0;                                      /*se o primeiro caractere da string str não for 'x'
-                                                            o expoente é igual a zero*/
-        if(strlen(strCoef)) coef = atof(strCoef);           /*verifica se as strings não são nulas*/
+        else expo = 0;                                      /*si no tiene un exponente, determina que el exponente es igual a 1...
+                                                            si el primer carácter de la cadena str no es 'x'...*/
+        if(strlen(strCoef)) coef = atof(strCoef);           /*comprueba que las cadenas no son nulas*/
         if(strlen(strExp)) expo = atoi(strExp);
-        if(sinal == '-') coef = coef*(-1);                  /*se o sinal for negativo
-                                                            o coeficiente é multiplicado por -1*/
+        if(sinal == '-') coef = coef*(-1);                  /*si el signo es negativo
+                                                            el coeficiente se multiplica por -1*/
 
-        polinomio = insereOrdenado(polinomio, coef, expo);          /*insere nó na lista com coeficiente e expoente obtidos*/
+        polinomio = insereOrdenado(polinomio, coef, expo);          /*inserta nodo en la lista con coeficiente y exponente obtenido*/
 
-                                                            /*apaga todas as variaveis auxiliares*/
+                                                            /*borra todas las variables auxiliares*/
         coef = 0;
         expo = 0;
         sinal = '+';
@@ -57,10 +57,10 @@ No* transformaString(char* str)
         strcpy(strExp,"\0");
     }
 
-    return polinomio;                                           /*retorna a lista*/
+    return polinomio;                                           /*devuelve la lista*/
 }
 
-/*A função apaga quantidade de caracteres apartir do começo*/
+/*La función borra el número de caracteres desde el principio.*/
 void apagarParteString(char* str, int qnt)
 {
     int tam, i;
@@ -76,7 +76,7 @@ void apagarParteString(char* str, int qnt)
     str[tam] = '\0';
 }
 
-/*A função copia a parte numerica do começo da primeira string para a segunda string*/
+/*La función copia la parte numérica desde el comienzo de la primera cadena a la segunda cadena*/
 void copiaParteNumerica(char* str1, char* str2)
 {
     int i;
@@ -89,8 +89,8 @@ void copiaParteNumerica(char* str1, char* str2)
     str2[i] = '\0';
 }
 
-/* A função insere os dois polinômios a serem somados e
-depois simplifica-os já que a inserção é ordenada*/
+/* La función inserta los dos polinomios que se agregarán y
+luego los simplifica ya que la inserción está ordenada*/
 No *somaPolinomio(No *l1,No *l2)
 {
 
@@ -128,54 +128,54 @@ No* subtrairPolinomios(No* polinomio1, No* polinomio2)
     p1 = polinomio1;
     p2 = polinomio2;
 
-    if(polinomio1 == NULL && polinomio2 == NULL) return NULL;       /*testa se os polinomios nao sao nulos*/
+    if(polinomio1 == NULL && polinomio2 == NULL) return NULL;       /*prueba si los polinomios no son nulos*/
 
-    while(p1 != NULL || p2 != NULL)                                 /*percorres as listas ate o fim das duas*/
+    while(p1 != NULL || p2 != NULL)                                 /*desplazarse por las listas hasta el final de los dos*/
     {
-        if(p1 != NULL && p2 != NULL)                         /*Se p1 e p2 forem diferentes de nulo*/
+        if(p1 != NULL && p2 != NULL)                         /*Si p1 y p2 son diferentes de nulo*/
         {
 
-            if(p1->exp == p2->exp)                          /*Se possuirem expoentes iguais*/
+            if(p1->exp == p2->exp)                          /*Si tienen exponentes iguales*/
             {
-                if((p1->coef - p2->coef) != 0)              /*se o coeficiente p1 menos o
-                                                            coeficiente de p2 não for igual a zero,
-                                                            insere na lista resultante*/
+                if((p1->coef - p2->coef) != 0)              /*si el coeficiente p1 menos el
+                                                            coeficiente de p2 no es igual a cero,
+                                                            inserta en la lista resultante*/
                 {
                     polinomioResultante = insereOrdenado(polinomioResultante, (p1->coef - p2->coef), p1->exp);
                     p1 = p1->proximo;
                     p2 = p2->proximo;
                 }
-                else                                       /*se não aponta para o proximo*/
+                else                                       /*si no apunta a la siguiente*/
                 {
                     p1 = p1->proximo;
                     p2 = p2->proximo;
                 }
             }
-            else                                          /*se os coeficientes forem diferentes*/
+            else                                          /*si los coeficientes son diferentes*/
             {
-                if(p1->exp > p2->exp)                     /*se o expoente de p1 é maior do que o de p2,
-                                                          insere p1 e aponta para o proximo*/
+                if(p1->exp > p2->exp)                     /*si el exponente de p1 es mayor que el de p2,
+                                                          si el exponente de p1 es mayor que el de p2*/
                 {
                     polinomioResultante = insereOrdenado(polinomioResultante, p1->coef, p1->exp);
                     p1 = p1->proximo;
                 }
-                else                                      /*se nao insere p2 e aponta para o proximo*/
+                else                                      /*si no inserta p2 y apunta al siguiente*/
                 {
                     polinomioResultante = insereOrdenado(polinomioResultante, (p2->coef* (-1)), p2->exp);
                     p2 = p2->proximo;
                 }
             }
         }
-        else                                              /*Se uma das listas for nula*/
+        else                                              /*Si una de las listas es nula*/
         {
-            if(p1 != NULL)                                /*Se p1 não for o nulo insere na
-                                                          lista resultante e aponta para o proximo*/
+            if(p1 != NULL)                                /*Si p1 no es el nulo se inserta en
+                                                          lista resultante y puntos a la siguiente*/
             {
                 polinomioResultante = insereOrdenado(polinomioResultante, p1->coef, p1->exp);
                 p1 = p1->proximo;
             }
-            if(p2 != NULL)                                 /*Se p2 não for o nulo insere na
-                                                           lista resultante e aponta para o proximo*/
+            if(p2 != NULL)                                 /*Si p2 no es la inserción nula en
+                                                           lista resultante y puntos a la siguiente*/
             {
                 polinomioResultante = insereOrdenado(polinomioResultante, -p2->coef, p2->exp);
                 p2 = p2->proximo;
@@ -186,7 +186,7 @@ No* subtrairPolinomios(No* polinomio1, No* polinomio2)
     return polinomioResultante;
 }
 
-/* A função abaixo multiplica dois polinômios*/
+/* La siguiente función multiplica dos polinomios.*/
 No* multiplicaPolinomio(No *l1,No *l2)
 {
     No* l3,*p1,*p2;
@@ -201,13 +201,13 @@ No* multiplicaPolinomio(No *l1,No *l2)
         while(p2!=NULL)
         {
 
-            if(p1->exp!=0 && p2->exp==0) /*Se o expoente do segundo polinômio for zero*/
+            if(p1->exp!=0 && p2->exp==0) /*Si el exponente del segundo polinomio es cero*/
                 l3 = insereOrdenado(l3,p1->coef*p2->coef,p1->exp);
 
-            else if(p1->exp==0 && p2->exp!=0) /*Se o expoente do primeiro polinômio for zero*/
+            else if(p1->exp==0 && p2->exp!=0) /*Si el exponente del segundo polinomio es cero...*/
                 l3 = insereOrdenado(l3,p1->coef*p2->coef,p2->exp);
             else
-                l3 = insereOrdenado(l3,p1->coef*p2->coef,p1->exp+p2->exp); /*Se os dois expoentes forem diferentes de 0*/
+                l3 = insereOrdenado(l3,p1->coef*p2->coef,p1->exp+p2->exp); /*Si los dos exponentes son diferentes de 0*/
             p2=p2->proximo;
         }
         p2=l2;
@@ -216,7 +216,7 @@ No* multiplicaPolinomio(No *l1,No *l2)
 
     l3=simplificaPolinomio(l3);
 
-    /**Gravar no arquivo**/
+    /**Escribir en el archivo**/
 
     return l3;
 }
@@ -229,17 +229,17 @@ ResultadoDivisao* dividirPolinomios(No* polinomio1, No* polinomio2)
     float coef;
     int expo;
 
-    resultado = criaResultadoDivisao();                 /*recebe resultado da divisao */
+    resultado = criaResultadoDivisao();                 /*Escribir en el archivo... */
     pAux = criaLista();
 
-    if(polinomio1->exp < polinomio2->exp)               /*se o expoente do primeiro no
-                                                        do polinomio1 é menor doque o
-                                                        expoente do primeiro no do polinomio2 */
+    if(polinomio1->exp < polinomio2->exp)               /*si el exponente de la primera en
+                                                        el polinomio 1 es menor que el
+                                                        exponente del primer número de polinomio2*/
     {
         p = polinomio1;
 
-        while(p != NULL)                                /*insere o polinomio1 no resto
-                                                        do ressultado, e o quociente eh zero*/
+        while(p != NULL)                                /*inserta polinomio1 en el resto
+                                                        el resultado, y el cociente es cero*/
         {
             resultado->resto = insereOrdenado(resultado->resto, p->coef, p->exp);
             p = p->proximo;
@@ -252,33 +252,33 @@ ResultadoDivisao* dividirPolinomios(No* polinomio1, No* polinomio2)
 
     do
     {
-        coef = (p->coef / polinomio2->coef);                        /*divide os coeficientes*/
-        expo = (p->exp - polinomio2->exp);                          /*subtrai os expoentes*/
+        coef = (p->coef / polinomio2->coef);                        /*divide los coeficientes*/
+        expo = (p->exp - polinomio2->exp);                          /*resta exponentes*/
 
-        resultado->quociente = insereOrdenado(resultado->quociente, coef, expo);     /*quarda o resultado no quociente*/
+        resultado->quociente = insereOrdenado(resultado->quociente, coef, expo);     /*almacena el resultado en el cociente*/
 
-        pAux = insereInicio(pAux, coef, expo);                      /*guarda o coeficiente e o expoente calculados*/
+        pAux = insereInicio(pAux, coef, expo);                      /*almacena el coeficiente calculado y el exponente*/
 
-        pAux = multiplicaPolinomio(pAux, polinomio2);               /*guarda o resuldado da multiplicação dos
-                                                                    valores do ultimo no do quoeficiente pelo polinomio2*/
+        pAux = multiplicaPolinomio(pAux, polinomio2);               /*guarda el resultado de la multiplicación de
+                                                                    valores del último número del coeficiente por polinomio2*/
 
-        resultado->resto = subtrairPolinomios(p, pAux);             /*recebe o resuldado da subtracao de p po pAux*/
+        resultado->resto = subtrairPolinomios(p, pAux);             /*recibe el resultado de la resta de p po pAux*/
 
-        pAux = removeNo(pAux, pAux);                                /*remove o unico no de pAux*/
+        pAux = removeNo(pAux, pAux);                                /*elimina el único número de pAux*/
 
-        p = resultado->resto;                                       /*p aponta pro resto*/
+        p = resultado->resto;                                       /*p señala al resto*/
     }
-    while( (resultado->resto != NULL) && (resultado->resto->exp >= polinomio2->exp) );  /*faz isso enquanto o resto
-                                                                                        for diferente zero e o expoente
-                                                                                        do primeiro no do resto for
-                                                                                        maior/igual ao expoente do
-                                                                                        primeiro no do polinomio2 */
+    while( (resultado->resto != NULL) && (resultado->resto->exp >= polinomio2->exp) );  /*haz esto mientras el resto
+                                                                                         es diferente de cero y el exponente
+                                                                                         del primero en el resto es
+                                                                                         mayor / igual al exponente de
+                                                                                         primero en el polinomio2*/
 
-    return resultado;                                               /*retorna o resuldado*/
+    return resultado;                                               /*devuelve el resultado*/
 }
 
-/* Nesta função compara-se nó a nó para verificar se é possível a simplificação
-então soma-se os coeficientes e elimina-se um nó */
+/* En esta función, se compara nodo por nodo para ver si es posible la simplificación
+entonces se agregan los coeficientes y se elimina un nodo */
 No* simplificaPolinomio(No *l)
 {
 
@@ -302,7 +302,7 @@ No* simplificaPolinomio(No *l)
     return l;
 }
 
-/* A função lê um valor real e calcula o resultado do polinômio */
+/* La función lee un valor real y calcula el resultado del polinomio. */
 float resultadoPolinomio(No *l,float v)
 {
 
@@ -319,13 +319,13 @@ float resultadoPolinomio(No *l,float v)
     }
 
     /*TODO
-    ESCREVER RESULTADO NO ARQUIVO!*/
+   ¡ESCRIBA EL RESULTADO EN EL ARCHIVO!*/
     return res;
 }
 
 
-/* A composição calcula o valor inserido em um polinômio e
-pega esse resultado calculando no proximo polinomio  */
+/* La composición calcula el valor insertado en un polinomio y
+tome este resultado calculando el próximo polinomio  */
 float compostoPolinomio(No *l1,No *l2,float v){
 
     No *q=l1;
@@ -339,16 +339,16 @@ float compostoPolinomio(No *l1,No *l2,float v){
     return res;
 }
 
-/* Na enésima composição o valor de x é recebido,
-depois polinômio é lido e calcula-se o valor para cada polinômio inserido
-sempre usando o ultimo resultado calculado*/
+/* En la enésima composición se recibe el valor de x,
+luego se lee el polinomio y se calcula el valor de cada polinomio insertado
+siempre usando el último resultado calculado*/
 float n_compostoPolinomio(float v){
 
     char stringPolinomio[MAX];
 
     while(1){
         No *l=criaLista();
-        printf("Entre com i-esimo polinomio.(Tecla S p/ sair),\n");
+        printf("Ingrese el polinomio i-esimo (tecla S para salir),\n");
         fflush(stdin);
         gets(stringPolinomio);
         if(stringPolinomio[0]=='S' || stringPolinomio[0]=='s')
@@ -389,7 +389,7 @@ int verificaString(char* str)
     else return 0;
 }
 
-/*Funcao integra um polinomio em um intervalo*/
+/*La función integra un polinomio en un intervalo*/
 float integralPolinomio(No* polinomio, int intervaloSuperior, int intervaloInferior)
 {
     No* polinomioResultante;
@@ -397,15 +397,15 @@ float integralPolinomio(No* polinomio, int intervaloSuperior, int intervaloInfer
 
     polinomioResultante = criaLista();
 
-    polinomioResultante = integral(polinomio);          /*integra o polinomio
-                                                        e depois calcula o resultado*/
+    polinomioResultante = integral(polinomio);          /*integra el polinomio
+                                                         y luego calcula el resultado */
 
     resultado = resultadoPolinomio(polinomioResultante, intervaloSuperior) - resultadoPolinomio(polinomioResultante, intervaloInferior);
 
     return resultado;
 }
 
-/*Integra o polinomio e o polinomio resultante é guardado em outra lista. Obs: não considera a constante gerada apos a integral*/
+/*Integra el polinomio y el polinomio resultante se almacena en otra lista. Nota: no considera la constante generada después de la integral*/
 No* integral(No* polinomio)
 {
     No* polinomioResultante, *p;
@@ -414,10 +414,10 @@ No* integral(No* polinomio)
 
     p = polinomio;
 
-    while(p != NULL)             /*enquanto p não aponta para nulo insere novo nó no polinomioResultante*/
+    while(p != NULL)             /*mientras que p no apunta a nulo inserta un nuevo nodo en el polinomio*/
     {
-                                /*o coeficiente de cada nó do polinomio é o coeficiente que p aponta dividido pelo expoente somado com 1
-                                e o expoente é o expoente que p aponta somado com 1 */
+                                /*el coeficiente de cada nodo del polinomio es el coeficiente que p puntos dividido por el exponente agregado con 1
+                                 y el exponente es el exponente que p agrega a 1*/
         polinomioResultante = insereOrdenado(polinomioResultante, (p->coef/(p->exp + 1)), (p->exp + 1));
         p = p->proximo;
     }
@@ -433,11 +433,11 @@ No* calculaDerivada(No* polinomio){
 
     p1 = polinomio;
 
-    if(polinomio == NULL) return NULL;       /*testa se o polinomio nao eh nulo*/
+    if(polinomio == NULL) return NULL;       /*prueba si el polinomio no es nulo*/
 
     while(p1 != NULL)
     {
-        if(p1->exp >= 1)    /* Faz a derivada de para o elevado >= 1, pois derivada de uma constante é zero */
+        if(p1->exp >= 1)    /* Deriva de para el alto> = 1, porque la derivada de una constante es cero */
         {
             polinomioResultante = insereOrdenado(polinomioResultante, (p1->coef * p1->exp), p1->exp - 1);
         }
@@ -449,8 +449,8 @@ No* calculaDerivada(No* polinomio){
 }
 
 
-/** Funcao transforma uma lista de um polinomio em string **/
-/*
+/** La función convierte una lista de un polinomio en una cadena **/
+
 char *transformaPolinomio(No* polinomio)
 {
     No* p = polinomio;
@@ -478,4 +478,4 @@ char *transformaPolinomio(No* polinomio)
 
     return stringPolinomio;
 }
-*/
+

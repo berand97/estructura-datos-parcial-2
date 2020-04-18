@@ -3,7 +3,7 @@
 int main(void)
 {
     char stringPolinomio[MAX];
-    FILE *arquivo, *log; /* log = registro das entradas do usuario */
+    FILE *arquivo, *log; /* log = registro de entradas de usuario */
     NoLOG *historico;
     int n, aux = 1, valor, valor2;
     float res;
@@ -18,17 +18,17 @@ int main(void)
     polinomio3 = criaLista();
 
     arquivo = fopen("arquivo.txt", "a+");
-    if(arquivo == NULL)  /* Abre arquivo */
+    if(arquivo == NULL)  /* Abrir archivo */
     {
             printf("Erro na abertura do arquivo");
             exit(1);
     }
 
-    do /* Verifica se o usuario digitou um numero invalido */
+    do /* Comprueba si el usuario escribió un número no válido*/
     {
-        printf("\nDigite uma opcao:");
-        printf("\n1- Ler o polinomio de um arquivo.");
-        printf("\n2- Ler o polinomio do teclado:\n");
+        printf("\ndigite una opcion:");
+        printf("\n1- leer  polinomio de un archivo.");
+        printf("\n2- leer  polinomio de  teclado:\n");
         scanf("%d", &n);
 
     }
@@ -36,7 +36,7 @@ int main(void)
 
     switch(n)  /*Verifica se por onde o usario quer enviar o polinomio*/
     {
-    case 1:/* Le o(s) polinomio(s) de um arquivo */
+    case 1:/* Leer los polinomios de un archivo */
         while (!feof(arquivo))
         {
             fgets(stringPolinomio, MAX, arquivo);
@@ -47,19 +47,19 @@ int main(void)
 
         break;
 
-    case 2:/* Le o(s) polinomio(s) do teclado */
-        do /* Continua lendo os polinomios ate o usuario optar por parar */
+    case 2:/* Leer los polinomios del teclado */
+        do /* Continúe leyendo los polinomios hasta que el usuario elija detener */
         {
-            printf("Entre com o polinomio:\n");
+            printf("Ingrese el polinomio:\n");
             setbuf(stdin, NULL);
             scanf("%s", &stringPolinomio);
             setbuf(stdin, NULL);
 
             fputs(stringPolinomio, arquivo);
 
-            printf("\nDeseja adicionar mais polinomios?");
-            printf("\nDigite uma opcao:");
-            printf("\n1- Continuar a adicionar.");
+            printf("\n¿Quieres agregar más polinomios??");
+            printf("\ndigite una opcion:");
+            printf("\n1- Continuar a agregar.");
             printf("\n0- Sair.\n");
 
             scanf("%d", &aux);
@@ -75,16 +75,16 @@ int main(void)
     do
     {
 
-    printf("\n\nDigite uma opcao:");
-    printf("\n1- Somar dois polinomios.");
-    printf("\n2- Subtrair dois polinomios.");
-    printf("\n3- Multiplicar dois polinomios.");
-    printf("\n4- Dividir dois polinomios.");
-    printf("\n5- Calcular a derivada de um polinomio.");
+    printf("\n\ndigite una opcion:");
+    printf("\n1- Sumar dos polinomios.");
+    printf("\n2- Restar dos polinomios.");
+    printf("\n3- Multiplicar dos polinomios.");
+    printf("\n4- Dividir dos polinomios.");
+    printf("\n5- Calcular la derivada de un polinomio.");
     printf("\n6- Simplificar um polinomio.");
-    printf("\n7- Calcular o polinomio dado um valor para x.");
+    printf("\n7- Calcule el polinomio dado un valor para x.");
     printf("\n8- Calcular um polinomio composto Q(P(x)) dado x.");
-    printf("\n9- Calcular um polinomio composto por quantos polinomios desejar.");
+    printf("\n9- Calcule un polinomio compuesto de tantos polinomios como desee.");
     printf("\n10- Integral definida.");
     printf("\n11- Integral indefinida.");
     printf("\n0- Sair.\n\n");
@@ -93,14 +93,14 @@ int main(void)
 
         switch(n) /* Switch-case das operacoes polinomiais */
         {
-        case 1:/* Soma */
+        case 1:/* Suma */
             do
             {
-                printf("\nEntre com o polinomio:\n");
+                printf("\nEntra con el otro:\n");
                 setbuf(stdin, NULL);
                 scanf("%s", &stringPolinomio);
                 setbuf(stdin, NULL);
-                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite novamente:\n");
+                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite nuevamente:\n");
             }
             while(!verificaString(stringPolinomio));
 
@@ -108,11 +108,11 @@ int main(void)
 
             do
             {
-                printf("\nEntre com o outro polinomio:\n");
+                printf("\nEntra con el otro polinomio:\n");
                 setbuf(stdin, NULL);
                 scanf("%s", &stringPolinomio);
                 setbuf(stdin, NULL);
-                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite novamente:\n");
+                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite nuevamente:\n");
             }
             while(!verificaString(stringPolinomio));
 
@@ -125,14 +125,14 @@ int main(void)
 
             break;
 
-        case 2:/* Subtracao */
+        case 2:/* Resta */
             do
             {
-                printf("\nEntre com o polinomio:\n");
+                printf("\nEntra con el otro:\n");
                 setbuf(stdin, NULL);
                 scanf("%s", &stringPolinomio);
                 setbuf(stdin, NULL);
-                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite novamente:\n");
+                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite nuevamente:\n");
             }
             while(!verificaString(stringPolinomio));
 
@@ -140,11 +140,11 @@ int main(void)
 
             do
             {
-                printf("\nEntre com o outro polinomio:\n");
+                printf("\nEntra con el otro polinomio:\n");
                 setbuf(stdin, NULL);
                 scanf("%s", &stringPolinomio);
                 setbuf(stdin, NULL);
-                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite novamente:\n");
+                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite nuevamente:\n");
             }
             while(!verificaString(stringPolinomio));
 
@@ -156,14 +156,14 @@ int main(void)
             imprimeLista(polinomio3);
 
             break;
-        case 3:/* Multiplicacao */
+        case 3:/* Multiplicacion */
             do
             {
-                printf("\nEntre com o polinomio:\n");
+                printf("\nEntra con el otro:\n");
                 setbuf(stdin, NULL);
                 scanf("%s", &stringPolinomio);
                 setbuf(stdin, NULL);
-                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite novamente:\n");
+                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite nuevamente:\n");
             }
             while(!verificaString(stringPolinomio));
 
@@ -171,11 +171,11 @@ int main(void)
 
             do
             {
-                printf("\nEntre com o outro polinomio:\n");
+                printf("\nEntra con el otro polinomio:\n");
                 setbuf(stdin, NULL);
                 scanf("%s", &stringPolinomio);
                 setbuf(stdin, NULL);
-                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite novamente:\n");
+                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite nuevamente:\n");
             }
             while(!verificaString(stringPolinomio));
 
@@ -188,14 +188,14 @@ int main(void)
 
             break;
 
-        case 4: /* Divisao */
+        case 4: /* Division */
             do
             {
-                printf("\nEntre com o polinomio:\n");
+                printf("\nEntra con el otro:\n");
                 setbuf(stdin, NULL);
                 scanf("%s", &stringPolinomio);
                 setbuf(stdin, NULL);
-                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite novamente:\n");
+                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite nuevamente:\n");
             }
             while(!verificaString(stringPolinomio));
 
@@ -203,11 +203,11 @@ int main(void)
 
             do
             {
-                printf("\nEntre com o outro polinomio:\n");
+                printf("\nEntra con el otro polinomio:\n");
                 setbuf(stdin, NULL);
                 scanf("%s", &stringPolinomio);
                 setbuf(stdin, NULL);
-                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite novamente:\n");
+                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite nuevamente:\n");
             }
             while(!verificaString(stringPolinomio));
 
@@ -223,11 +223,11 @@ int main(void)
         case 5:/* Derivada */
             do
             {
-                printf("\nEntre com o outro polinomio:\n");
+                printf("\nEntra con el otro polinomio:\n");
                 setbuf(stdin, NULL);
                 scanf("%s", &stringPolinomio);
                 setbuf(stdin, NULL);
-                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite novamente:\n");
+                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite nuevamente:\n");
             }
             while(!verificaString(stringPolinomio));
 
@@ -242,11 +242,11 @@ int main(void)
         case 6:/* Simplificar */
             do
             {
-                printf("\nEntre com o polinomio:\n");
+                printf("\nEntra con el otro:\n");
                 setbuf(stdin, NULL);
                 scanf("%s", &stringPolinomio);
                 setbuf(stdin, NULL);
-                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite novamente:\n");
+                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite nuevamente:\n");
             }
             while(!verificaString(stringPolinomio));
 
@@ -259,14 +259,14 @@ int main(void)
 
             break;
 
-        case 7:/* Calcular P(x) a partir de x */
+        case 7:/* Calcule P (x) a partir de x */
             do
             {
-                printf("\nEntre com o polinomio:\n");
+                printf("\nEntra con el otro:\n");
                 setbuf(stdin, NULL);
                 scanf("%s", &stringPolinomio);
                 setbuf(stdin, NULL);
-                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite novamente:\n");
+                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite nuevamente:\n");
             }
             while(!verificaString(stringPolinomio));
 
@@ -284,11 +284,11 @@ int main(void)
         case 8:/* Q(P(x)) */
             do
             {
-                printf("\nEntre com o polinomio:\n");
+                printf("\nEntra con el otro:\n");
                 setbuf(stdin, NULL);
                 scanf("%s", &stringPolinomio);
                 setbuf(stdin, NULL);
-                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite novamente:\n");
+                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite nuevamente:\n");
             }
             while(!verificaString(stringPolinomio));
 
@@ -296,11 +296,11 @@ int main(void)
 
             do
             {
-                printf("\nEntre com o polinomio:\n");
+                printf("\nEntra con el otro:\n");
                 setbuf(stdin, NULL);
                 scanf("%s", &stringPolinomio);
                 setbuf(stdin, NULL);
-                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite novamente:\n");
+                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite nuevamente:\n");
             }
             while(!verificaString(stringPolinomio));
 
@@ -315,7 +315,7 @@ int main(void)
 
             break;
 
-        case 9: /* Polinomios compostos */
+        case 9: /* Polinomios compuestos */
 
             printf("\nEntre com o valor:\n");
             scanf("%f", &valor);
@@ -329,20 +329,20 @@ int main(void)
         case 10: /* Integral definida */
             do
             {
-                printf("\nEntre com o polinomio:\n");
+                printf("\nEntra con el otro:\n");
                 setbuf(stdin, NULL);
                 scanf("%s", &stringPolinomio);
                 setbuf(stdin, NULL);
-                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite novamente:\n");
+                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite nuevamente:\n");
             }
             while(!verificaString(stringPolinomio));
 
             polinomio1 = transformaString(stringPolinomio);
 
-            printf("\nEntre com o valor do intervalo superior:\n");
+            printf("\nIngrese el valor del rango superior:\n");
             scanf("%f", &valor);
 
-            printf("\nEntre com o valor do intervalo inferior:\n");
+            printf("\nIngrese el valor del rango superior:\n");
             scanf("%f", &valor2);
 
             res = integralPolinomio(polinomio1, valor, valor2);
@@ -354,11 +354,11 @@ int main(void)
         case 11: /*Integral indefinida*/
             do
             {
-                printf("\nEntre com o polinomio:\n");
+                printf("\nEntra con el otro:\n");
                 setbuf(stdin, NULL);
                 scanf("%s", &stringPolinomio);
                 setbuf(stdin, NULL);
-                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite novamente:\n");
+                if(!verificaString(stringPolinomio)) printf("\nPolinomio invalido, digite nuevamente:\n");
             }
             while(!verificaString(stringPolinomio));
 

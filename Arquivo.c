@@ -1,14 +1,14 @@
 #include "Polinomios.h"
 
-NoLOG* criaListaLOG(){ /* Cria lista do LOG */
+NoLOG* criaListaLOG(){ /* Crear lista de LOG*/
     return NULL;
 }
 
-/* Insere no inicio da lista LOG as operações e resultados do usuário */
+/* Inserte operaciones de usuario y resultados al comienzo de la lista LOG */
 NoLOG* InsereInicioLOG (NoLOG* l, char* info)
 {
     NoLOG* novo = (NoLOG*) malloc(sizeof(NoLOG));
-    if(novo == NULL){ printf("Erro."); exit(1);}
+    if(novo == NULL){ printf("Error."); exit(1);}
 
     novo->info = info;
     novo->proximo = l;
@@ -16,22 +16,22 @@ NoLOG* InsereInicioLOG (NoLOG* l, char* info)
     return novo;
 }
 
-/** Funcao recebe uma lista L e insere ela no arquivo **/
+/** La función recibe una lista L y la inserta en el archivo **/
 void escreveLOG(FILE *log, NoLOG* lista)
 {
     NoLOG *l = lista;
 
-    while(l != NULL){ /** Enquanto a lista nao chegar no fim, insere a string NoLOG por cada char* na lista no arquivo, linha a linha **/
+    while(l != NULL){ /** Hasta que la lista llegue al final, inserte la cadena NoLOG para cada char * en la lista en el archivo, línea por línea **/
         fputs (l->info, log);
         l = l->proximo;
     }
 }
 
-void imprimeLOG(FILE *log){ /** Funcao que imprime o LOG **/
+void imprimeLOG(FILE *log){ /** Función que imprime el REGISTRO **/
     char s[20];
     log = fopen("log.txt", "r");
 
-    if(log == NULL){ printf("Erro, nao foi possivel abrir o arquivo\n");}
+    if(log == NULL){ printf("Error, no se pudo abrir el archivo\n");}
 
     else{
             while(fscanf(log,"%s", &s) != EOF){ /* Printa linha a linha */
